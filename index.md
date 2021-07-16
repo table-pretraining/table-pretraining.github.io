@@ -47,7 +47,7 @@ More importantly, our backbone is a simple Transformer-based Encoder-Decoder mod
 
 # ⚔️ T<span class="span-small">A</span>PE<span class="span-small">X</span> v.s. Previous Table Pre-training
 
-Our T<span class="span-small">A</span>PE<span class="span-small">X</span> can achieve significantly better results compared to previous table pre-training techniques, with a much smaller sytheized pre-training corpus.
+Our T<span class="span-small">A</span>PE<span class="span-small">X</span> can achieve significantly better results compared to previous table pre-training techniques, with a much smaller synthesized pre-training corpus.
 
 <figure style="text-align:center">
   <img src="/assets/efficiency_demo.jpg" width="300">
