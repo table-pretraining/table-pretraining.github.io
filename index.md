@@ -2,122 +2,83 @@
 layout: default
 ---
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+In this project, we present T<span class="span-small">A</span>PE<span class="span-small">X</span> (for **Ta**ble **P**re-training via **Ex**ecution), a conceptually simple and empirically powerful pre-training approach to empower existing models with table reasoning skills.
+T<span class="span-small">A</span>PE<span class="span-small">X</span> realizes table pre-training by **learning a neural SQL executor over a synthetic corpus**, which is obtained by automatically synthesizing executable SQL queries.
 
-[Link to another page](./another-page.html).
+<figure style="text-align:center">
+  <img src="/assets/tapex_overview.jpg" width="300">
+  <figcaption>Fig 1. The schematic illustration of T<span class="span-small">A</span>PE<span class="span-small">X</span>. Tables not shown for brevity.</figcaption>
+</figure>
 
-There should be whitespace between paragraphs.
+The central point of T<span class="span-small">A</span>PE<span class="span-small">X</span> is to train a model to **mimic the SQL query execution process over a table**.
+We believe that if a model can be trained to faithfully *execute* SQL queries, then it must have a deep understanding of table structures and possess an inductive bias towards table structures.
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+<div style="text-align:center">
+<img src="/assets/model_pretrain.gif" width="600"></div>
 
-# Header 1
+Meanwhile, since the diversity of SQL queries can be guaranteed systemically, and thus a *diverse* and *high-quality* pre-training corpus can be automatically synthesized for T<span class="span-small">A</span>PE<span class="span-small">X</span>.
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+# 🏆 T<span class="span-small">A</span>PE<span class="span-small">X</span> = SOTA on Four Benchmarks
 
-## Header 2
+We evaluate T<span class="span-small">A</span>PE<span class="span-small">X</span> on two tasks 💬 Table Question Answering and 🔎 Table Fact Verficiation.
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+<figure style="text-align:center">
+  <img src="/assets/tableqa_task.png" width="500">
+  <figcaption>Fig 2. An example of Table Question Answering. Credits: <a href="https://nlp.stanford.edu/blog/wikitablequestions-a-complex-real-world-question-understanding-dataset">Link</a>.</figcaption>
+</figure>
 
-### Header 3
+<figure style="text-align:center">
+  <img src="/assets/tableft_task.png" width="500">
+  <figcaption>Fig 3. An example of Table Fact Verification. Credits: <a href="https://tabfact.github.io/">Link</a>.</figcaption>
+</figure>
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
+Experimental results demonstrate that T<span class="span-small">A</span>PE<span class="span-small">X</span> outperforms previous table pre-training approaches by a large margin, and our model achieves new state-of-the-art results on four well-known datasets, including:
+- improving the WikiSQL denotation accuracy to <span style="color: #159957;font-weight:700;">89.6</span> (📈+4.9).
+- improving the WikiTableQuestions denotation accuracy to <span style="color: #159957;font-weight:700;">57.5</span> (📈+4.8).
+- improving the SQA denotation accuracy to <span style="color: #159957;font-weight:700;">74.5</span> (📈+3.5).
+- improving the TabFact accuracy to <span style="color: #159957;font-weight:700;">84.6</span> (📈+3.6).
+
+<figure style="text-align:center">
+  <img src="/assets/dataset.jpg" width="400">
+  <figcaption>Tab 1. Dataset statistics</figcaption>
+</figure>
+
+More importantly, our backbone is a simple Transformer-based Encoder-Decoder model without any task-specific architecture, which can be extended to **any kind of** downstream task.
+
+# ⚔️ T<span class="span-small">A</span>PE<span class="span-small">X</span> v.s. Previous Table Pre-training
+
+Our T<span class="span-small">A</span>PE<span class="span-small">X</span> can achieve significantly better results compared to previous table pre-training techniques, with a much smaller sytheized pre-training corpus.
+
+<figure style="text-align:center">
+  <img src="/assets/efficiency_demo.jpg" width="300">
+  <figcaption>Fig 4. The amount of our pre-training corpus v.s. WikiTQ dev set denotation accuracy.</figcaption>
+</figure>
+
+| Pre-training Model |  Pre-training Task    |  Pre-training Scale |  WikiTQ Acc |
+|:-------------|:------------------|:------| :----: |
+| [T<span class="span-small">A</span>P<span class="span-small">A</span>S (Herzig et al., 2020)](https://aclanthology.org/2020.acl-main.398/)     | Masked Language Model | 21.3 Million  | 48.8 |
+| [TaBERT (Yin et al., 2020)](https://aclanthology.org/2020.acl-main.745/)    | Masked Column Prediction +<br>Cell Value Recovery   | 26.3 Million  | 53.0 |
+| [GraPPa (Yu et al., 2020)](https://openreview.net/forum?id=kyaIeYj4zZ)     | Masked Language Model +<br>SQL Semantic Prediction  | 0.9 Million | 51.9 |
+| T<span class="span-small">A</span>PE<span class="span-small">X</span> (Ours, 1 Million)        | SQL Execution | 1.0 Million  | **56.1** |
+| T<span class="span-small">A</span>PE<span class="span-small">X</span> (Ours, 5 Million)        | SQL Execution | 5.0 Million  | **57.0** |
+
+> WikiTQ refers to the challenging [WikiTableQuestions](https://github.com/ppasupat/WikiTableQuestions) dataset (Pasupat and Liang, 2015).
+
+# 😉 Other Interesting Work
+
+- [https://github.com/microsoft/IRNet](https://github.com/microsoft/IRNet)
+- [https://github.com/microsoft/ContextualSP](https://github.com/microsoft/ContextualSP)
+- [https://github.com/JasperGuo/Unimer](https://github.com/JasperGuo/Unimer)
+
+# 📍 Citation
+
+If you find our work useful to you, please kindly cite it by:
+
+```bibtex
+@article{liu2021tapex,
+  title={TaPEx: Learning a Neural SQL Executor for Table Pre-training},
+  author={Liu, Qian and Chen, Bei and Guo, Jiaqi and Lin, Zeqi and Lou, Jian-Guang},
+  journal={arxiv},
+  year={2021}
 }
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
 ```
