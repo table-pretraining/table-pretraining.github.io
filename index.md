@@ -75,10 +75,11 @@ Our T<span class="span-small">A</span>PE<span class="span-small">X</span> can ac
 If you find our work useful to you, please kindly cite it by:
 
 ```bibtex
-@article{liu2021tapex,
-  title={TAPEX: Learning a Neural SQL Executor for Table Pre-training},
-  author={Liu, Qian and Chen, Bei and Guo, Jiaqi and Lin, Zeqi and Lou, Jian-Guang},
-  journal={arxiv},
-  year={2021}
-}
-```
+@misc{liu2021tapex,
+    title={TAPEX: Table Pre-training via Learning a Neural SQL Executor}, 
+    author={Qian Liu and Bei Chen and Jiaqi Guo and Zeqi Lin and Jian-guang Lou},
+    year={2021},
+    eprint={2107.07653},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
+}```
