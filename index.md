@@ -2,7 +2,7 @@
 layout: default
 ---
 
-> We are working hard to make the code clean and easy to use, and postpone the original release date to Aug 27. Please stay tuned and thanks for your patience.
+> We are happy to inform that our code has been released! Please click the `Code` button to play with TAPEX.
 
 In this project, we present T<span class="span-small">A</span>PE<span class="span-small">X</span> (for **Ta**ble **P**re-training via **Ex**ecution), a conceptually simple and empirically powerful pre-training approach to empower existing models with table reasoning skills.
 T<span class="span-small">A</span>PE<span class="span-small">X</span> realizes table pre-training by **learning a neural SQL executor over a synthetic corpus**, which is obtained by automatically synthesizing executable SQL queries.
