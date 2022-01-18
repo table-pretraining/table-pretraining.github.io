@@ -15,8 +15,10 @@ T<span class="span-small">A</span>PE<span class="span-small">X</span> realizes t
 The central point of T<span class="span-small">A</span>PE<span class="span-small">X</span> is to train a model to **mimic the SQL query execution process over a table**.
 We believe that if a model can be trained to faithfully *execute* SQL queries, then it must have a deep understanding of table structures and possess an inductive bias towards table structures.
 
-<div style="text-align:center">
-<img src="/assets/model_pretrain.gif" width="600"></div>
+<figure style="text-align:center">
+  <img src="/assets/model_pretrain.gif" width="600">
+  <figcaption>Fig 2. The illustration of the pre-training procedure in T<span class="span-small">A</span>PE<span class="span-small">X</span>.</figcaption>
+</figure>
 
 Meanwhile, since the diversity of SQL queries can be guaranteed systemically, and thus a *diverse* and *high-quality* pre-training corpus can be automatically synthesized for T<span class="span-small">A</span>PE<span class="span-small">X</span>.
 
@@ -26,19 +28,19 @@ We evaluate T<span class="span-small">A</span>PE<span class="span-small">X</span
 
 <figure style="text-align:center">
   <img src="/assets/tableqa_task.png" width="500">
-  <figcaption>Fig 2. An example of Table Question Answering. Credits: <a href="https://nlp.stanford.edu/blog/wikitablequestions-a-complex-real-world-question-understanding-dataset">Link</a>.</figcaption>
+  <figcaption>Fig 3. An example of Table Question Answering. Credits: <a href="https://nlp.stanford.edu/blog/wikitablequestions-a-complex-real-world-question-understanding-dataset">Link</a>.</figcaption>
 </figure>
 
 <figure style="text-align:center">
   <img src="/assets/tableft_task.png" width="500">
-  <figcaption>Fig 3. An example of Table Fact Verification. Credits: <a href="https://tabfact.github.io/">Link</a>.</figcaption>
+  <figcaption>Fig 4. An example of Table Fact Verification. Credits: <a href="https://tabfact.github.io/">Link</a>.</figcaption>
 </figure>
 
 Experimental results demonstrate that T<span class="span-small">A</span>PE<span class="span-small">X</span> outperforms previous table pre-training approaches by a large margin, and our model achieves new state-of-the-art results on four well-known datasets, including:
-- improving the WikiSQL denotation accuracy to <span style="color: #159957;font-weight:700;">89.6</span> (📈+4.9).
+- improving the WikiSQL denotation accuracy to <span style="color: #159957;font-weight:700;">89.5</span> (📈+2.3).
 - improving the WikiTableQuestions denotation accuracy to <span style="color: #159957;font-weight:700;">57.5</span> (📈+4.8).
 - improving the SQA denotation accuracy to <span style="color: #159957;font-weight:700;">74.5</span> (📈+3.5).
-- improving the TabFact accuracy to <span style="color: #159957;font-weight:700;">84.6</span> (📈+3.6).
+- improving the TabFact accuracy to <span style="color: #159957;font-weight:700;">84.2</span> (📈+3.2).
 
 <figure style="text-align:center">
   <img src="/assets/dataset.jpg" width="400">
@@ -53,7 +55,7 @@ Our T<span class="span-small">A</span>PE<span class="span-small">X</span> can ac
 
 <figure style="text-align:center">
   <img src="/assets/efficiency_demo.jpg" width="300">
-  <figcaption>Fig 4. The amount of our pre-training corpus v.s. WikiTQ dev set denotation accuracy.</figcaption>
+  <figcaption>Fig 5. The amount of our pre-training corpus v.s. WikiTQ dev set denotation accuracy.</figcaption>
 </figure>
 
 | Pre-training Model |  Pre-training Task    |  Pre-training Scale |  WikiTQ Acc |
@@ -79,7 +81,7 @@ If you find our work useful to you, please kindly cite it by:
 ```bibtex
 @misc{liu2021tapex,
     title={TAPEX: Table Pre-training via Learning a Neural SQL Executor}, 
-    author={Qian Liu and Bei Chen and Jiaqi Guo and Zeqi Lin and Jian-guang Lou},
+    author={Qian Liu and Bei Chen and Jiaqi Guo and Morteza Ziyadi and Zeqi Lin and Weizhu Chen and Jian-guang Lou},
     year={2021},
     eprint={2107.07653},
     archivePrefix={arXiv},
